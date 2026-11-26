@@ -1,0 +1,20 @@
+{
+  "name": "ecidadao",
+  "interface": {
+    "displayName": "eCidadão"
+  },
+  "plugins": [
+    {
+      "name": "ecidadao",
+      "source": {
+        "source": "local",
+        "path": "./plugins/ecidadao"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

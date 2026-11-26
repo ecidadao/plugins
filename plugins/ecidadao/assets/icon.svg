@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256" role="img" aria-label="eCidadão">
+  <rect width="256" height="256" rx="56" fill="#15734f"/>
+  <path d="M56 77h144v103H56z" fill="#fff" opacity=".14"/>
+  <path d="M72 97h112M72 125h77M72 153h91" stroke="#fff" stroke-width="12" stroke-linecap="round"/>
+  <circle cx="187" cy="181" r="32" fill="#e8f3e8"/>
+  <path d="m174 181 9 9 18-20" fill="none" stroke="#15734f" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

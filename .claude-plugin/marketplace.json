@@ -1,0 +1,15 @@
+{
+  "name": "ecidadao",
+  "owner": {
+    "name": "Código Inadiável",
+    "email": "hello@codeperf.io"
+  },
+  "plugins": [
+    {
+      "name": "ecidadao",
+      "source": "./plugins/ecidadao",
+      "description": "Guide people to Portuguese public-service portals and prepare reviewable drafts for e-balcão, A Minha Rua and consumer complaints. Independent service; no official submissions."
+    }
+  ],
+  "description": "Plugins abertos para serviços públicos em Portugal."
+}

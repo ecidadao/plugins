@@ -1,0 +1,44 @@
+name: Validate and package
+on:
+  push:
+    branches: [main]
+    tags: ['v*']
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm install -g @anthropic-ai/claude-code@2.1.332
+      - run: claude plugin validate plugins/ecidadao --strict
+      - run: claude plugin validate . --strict
+      - run: python3 scripts/package.py --check --build
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ecidadao-plugin
+          path: dist/*.zip
+  release:
+    if: startsWith(github.ref, 'refs/tags/v')
+    needs: validate
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check tag matches manifest
+        run: python3 -c 'import json, os; assert os.environ["GITHUB_REF_NAME"] == "v" + json.load(open("plugins/ecidadao/plugin.json"))["version"]'
+      - uses: actions/download-artifact@v4
+        with:
+          name: ecidadao-plugin
+          path: dist
+      - run: gh release create "$GITHUB_REF_NAME" dist/*.zip --generate-notes
+        env:
+          GH_TOKEN: ${{ github.token }}

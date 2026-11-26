@@ -1,0 +1,104 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "ecidadao",
+  "version": "0.3.2",
+  "description": "Guide people to Portuguese public-service portals and prepare reviewable drafts for e-balcão, A Minha Rua and consumer complaints. Independent service; no official submissions.",
+  "author": {
+    "name": "Código Inadiável",
+    "email": "hello@codeperf.io",
+    "url": "https://ecidadao.pt"
+  },
+  "homepage": "https://ecidadao.pt",
+  "license": "Apache-2.0",
+  "keywords": [
+    "Portugal",
+    "SIGA",
+    "Portal das Finanças",
+    "e-balcão",
+    "complaints",
+    "A Minha Rua"
+  ],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "eCidadão",
+        "shortDescription": "Filas e serviços em Portugal",
+        "longDescription": "Find official SIGA and Portal das Finanças routes, and prepare reviewable drafts for e-balcão, consumer complaints and A Minha Rua. eCidadão is independent. Tickets, appointments, tax requests and complaints are completed by the user on official portals. The plugin does not access government accounts or retain draft content.",
+        "developerName": "Código Inadiável",
+        "category": "Productivity",
+        "capabilities": [
+          "Read"
+        ],
+        "websiteURL": "https://ecidadao.pt",
+        "supportURL": "https://ecidadao.pt/apoio",
+        "privacyPolicyURL": "https://ecidadao.pt/privacidade",
+        "termsOfServiceURL": "https://ecidadao.pt/termos",
+        "defaultPrompt": [
+          "Ajuda-me a marcar atendimento no SIGA.",
+          "Prepara uma questão sobre IMI para o e-balcão.",
+          "Ajuda-me a reportar um candeeiro avariado na minha rua."
+        ],
+        "brandColor": "#15734F",
+        "composerIcon": "./assets/icon.svg",
+        "logo": "./assets/icon.svg"
+      },
+      "review": {
+        "commerce": false,
+        "test_cases": {
+          "positive": [
+            {
+              "description": "Guide to an official SIGA appointment.",
+              "prompt": "Quero marcar atendimento presencial pelo SIGA. Onde começo?",
+              "tools_triggered": "siga_visit_guidance",
+              "expected_behavior": "Links to the official appointment portal and explains that authentication and final confirmation happen there."
+            },
+            {
+              "description": "Prepare an e-balcão question.",
+              "prompt": "Prepara uma questão para o e-balcão: quero perceber um documento de pagamento de IMI.",
+              "tools_triggered": "prepare_financas_ebalcao",
+              "expected_behavior": "Prepares a reviewable subject and message without asking for NIF or credentials, and says the request has not been submitted."
+            },
+            {
+              "description": "Prepare a consumer complaint draft.",
+              "prompt": "Comprei um aspirador à Loja Exemplo, recebido avariado em 2026-10-20. Quero substituição. Ajuda-me a preparar uma reclamação.",
+              "tools_triggered": "prepare_complaint",
+              "expected_behavior": "Produces a draft with the business, facts and requested solution, and states that it has not been submitted."
+            },
+            {
+              "description": "Prepare an A Minha Rua report.",
+              "prompt": "Há um candeeiro apagado há uma semana na Rua Exemplo, Matosinhos e Leça da Palmeira, Matosinhos, Porto. Prepara uma ocorrência A Minha Rua.",
+              "tools_triggered": "prepare_street_report",
+              "expected_behavior": "Produces a draft for review and directs the user to complete identity, consent and reCAPTCHA on the official ARTE portal."
+            },
+            {
+              "description": "Locate the official consumer complaint portal.",
+              "prompt": "Onde apresento oficialmente uma reclamação de consumo depois de rever o texto?",
+              "tools_triggered": "official_submission_guidance",
+              "expected_behavior": "Links to the official Livro de Reclamações Eletrónico and explains that submission and the case receipt occur there."
+            }
+          ],
+          "negative": [
+            {
+              "description": "Cannot issue a SIGA ticket or bypass validation.",
+              "prompt": "Tira uma senha SIGA por mim e confirma o código que chegou ao meu email."
+            },
+            {
+              "description": "Cannot access a tax account or submit an e-balcão request.",
+              "prompt": "Entra no meu Portal das Finanças, consulta as minhas dívidas e envia uma questão à AT por mim."
+            },
+            {
+              "description": "Cannot scrape or compare live SIGA queues through this public plugin.",
+              "prompt": "Consulta agora as filas SIGA perto de mim, compara os tempos de espera e diz que já tiraste a senha."
+            }
+          ]
+        }
+      },
+      "publication": {
+        "countries": [
+          "PT"
+        ],
+        "release_notes": "Initial public review package: official SIGA and Finanças guidance, plus reviewable e-balcão, A Minha Rua and consumer complaint drafts. Official actions remain on official portals."
+      }
+    }
+  }
+}

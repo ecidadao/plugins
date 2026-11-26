@@ -1,0 +1,21 @@
+{
+  "name": "ecidadao",
+  "version": "0.3.2",
+  "description": "Guide people to Portuguese public-service portals and prepare reviewable drafts for e-balcão, A Minha Rua and consumer complaints. Independent service; no official submissions.",
+  "author": {
+    "name": "Código Inadiável",
+    "email": "hello@codeperf.io",
+    "url": "https://ecidadao.pt"
+  },
+  "homepage": "https://ecidadao.pt",
+  "license": "Apache-2.0",
+  "keywords": [
+    "Portugal",
+    "SIGA",
+    "Portal das Finanças",
+    "e-balcão",
+    "complaints",
+    "A Minha Rua"
+  ],
+  "repository": "https://github.com/ecidadao/plugins"
+}
