@@ -17,5 +17,6 @@
     "complaints",
     "A Minha Rua"
   ],
-  "repository": "https://github.com/ecidadao/plugins"
+  "repository": "https://github.com/ecidadao/plugins",
+  "privacyPolicyUrl": "https://ecidadao.pt/privacidade"
 }
