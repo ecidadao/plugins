@@ -20,6 +20,7 @@ def main():
     servers = read(PLUGIN / "mcp.json")["mcpServers"]
     compatibility = {k: manifest[k] for k in ("name", "version", "description", "author", "homepage", "license", "keywords")}
     compatibility["repository"] = "https://github.com/ecidadao/plugins"
+    compatibility["privacyPolicyUrl"] = manifest["extensions"]["com.openai"]["interface"]["privacyPolicyURL"]
     http_servers = {}
     for name, server in servers.items():
         assert server["type"] == "streamable-http", "Unsupported transport"
