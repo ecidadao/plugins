@@ -13,7 +13,7 @@ Verificado em 27/11/2026. Consulte [os estados por plataforma e a matriz de func
 | GitHub / Codex / Claude Code | Pacote aberto [v0.3.4 publicado](https://github.com/ecidadao/plugins/releases/tag/v0.3.4), instalável pelos comandos abaixo |
 | Diretório OpenAI | Último estado comunicado: **In review**, versão 0.3.1, em 13/11/2026; estado atual não reconfirmado |
 | Diretório oficial Anthropic | Aprovação/publicação não confirmadas; instalação pelo marketplace deste repositório disponível |
-| Mistral | [Configuração MCP documentada](docs/mistral.md); validação dentro do cliente pendente |
+| Mistral | [Loader Vibe validado com artefacto adaptado](docs/ci-compatibility.md); Le Chat/Work e execução com modelo pendentes |
 
 O endpoint público 0.3.4 expõe dez ferramentas, verificado em 27/11/2026. O pacote 0.3.4 está publicado no GitHub; os estados de distribuição confirmados constam da tabela acima. A pesquisa de serviços do website e o Livro Amarelo experimental e as consultas de filas do site não estão incluídos nesse catálogo público. Publicação no GitHub não equivale a aprovação num diretório oficial.
 
@@ -80,12 +80,15 @@ Integrações em avaliação: [Caravela — análise, parceria e exemplo de pont
 `plugins/ecidadao/plugin.json` e `mcp.json` são a fonte dos metadados e da ligação MCP. As skills são partilhadas. Depois de editar, gere e valide os adaptadores Claude:
 
 ```sh
+python3 -m pip install --require-hashes -r scripts/requirements-ci.txt
 python3 scripts/package.py --sync
 python3 scripts/package.py --check
 claude plugin validate plugins/ecidadao
 claude plugin validate .
 python3 scripts/package.py --build
 ```
+
+A [matriz de CI](docs/ci-compatibility.md) distingue instalação Codex isolada, carregador Vibe real, checks estáticos e verificações externas semanais/manuais. O artefacto Vibe é separado e não substitui o ZIP 0.3.4 publicado.
 
 O ZIP é criado em `dist/`, com os ficheiros do plugin na raiz. A CI verifica os adaptadores e publica o ZIP como artefacto; tags `v*` criam uma GitHub Release. A versão da tag deve coincidir com o manifesto.
 

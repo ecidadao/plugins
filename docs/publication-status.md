@@ -18,7 +18,7 @@ A evidência HTTP e os limites estão registados na [revisão 0.3.4](review-0.3.
 | Claude Code, marketplace deste repositório | Pacote 0.3.4 disponível | Adaptadores gerados e validados pela CI; comandos no README |
 | OpenAI, diretório oficial | 0.3.1: último estado comunicado **In review**, 13/11/2026 | [Registo histórico](https://github.com/ecidadao/ecidadao/blob/main/docs/plugin-submission-0.3.1.md); reconfirmar painel antes de anunciar aprovação ou publicação |
 | Anthropic, diretório oficial | Publicação não confirmada | Marketplace próprio não demonstra inclusão no diretório oficial |
-| Mistral, conector personalizado | Configuração documentada; teste no cliente pendente | [Guia](mistral.md); sem publicação em catálogo Mistral confirmada |
+| Mistral | Loader Vibe 3.1.5 validado com artefacto adaptado; Le Chat/Work e execução com modelo pendentes | [Matriz de CI](ci-compatibility.md); sem publicação em catálogo Mistral confirmada |
 
 O endpoint `https://ecidadao.pt/mcp/public` respondeu a `initialize` (protocolo `2025-06-18`) e `tools/list` nesta verificação, identificando servidor 0.3.4 e dez ferramentas. Isto não substitui um teste dentro de cada cliente.
 
@@ -34,7 +34,7 @@ O endpoint `https://ecidadao.pt/mcp/public` respondeu a `initialize` (protocolo 
 | Pesquisa municipal estática | `municipal_service_search`, disponível no servidor 0.3.4; 320 entradas: Gondomar 136, Maia 126, Ponte de Lima 58 | Encaminhamento oficial; entrada de catálogo não equivale a operação executável |
 | Disponibilidade municipal | `municipal_appointment_availability`, disponível no servidor 0.3.4 | Apenas Ponte de Lima; GET do frontend público em tempo real, sem reserva |
 | Apoios de habitação e ambiente | `public_support_guidance`, disponível no servidor 0.3.4 | Sete percursos PT/EN com fontes e datas; sem candidatura, dados pessoais ou garantia de aprovação |
-| Pesquisa por necessidade | Não incluída | [Website](https://ecidadao.pt/servicos), nove percursos curados |
+| Pesquisa por necessidade | Não incluída | [Website](https://ecidadao.pt/servicos), treze percursos curados |
 | Livro Amarelo: reclamação, elogio, sugestão | Não incluído | Website e `prepare_public_service_feedback` em `/mcp` experimental |
 | Filas SIGA em tempo real | Não incluídas | Adaptador do website, com cobertura limitada; acesso de integração por confirmar |
 | Inglês e tema automático | Funcionalidades de interface do site; não são ferramentas MCP | Disponíveis no website; rascunhos MCP continuam em português |
@@ -64,3 +64,8 @@ OpenAI 0.3.1, Anthropic e validação Mistral mantêm estados independentes: dis
 
 Serviços de apoio: `porta65_young`, `porta65_plus`, `gondomar_housing`, `environmental_fund`, `vale_efficiency`, `elar`, `green_mobility`.
 Estados devem distinguir candidatura nova, ação de beneficiário existente e pagamento de fornecedor; nunca converter prazo antigo em disponibilidade atual, nem dotação total em saldo disponível.
+
+## Compatibilidade automatizada
+
+[CI e matriz de evidência](ci-compatibility.md): instalação Codex 0.172.0 isolada, loader real Vibe 3.1.5 com artefacto próprio, integridade ZIP e checks agendados de release/endpoint.
+Estes checks não alteram os estados de aprovação de diretórios, nem instalam o plugin no perfil do utilizador.
