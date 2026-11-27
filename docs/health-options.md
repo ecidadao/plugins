@@ -2,6 +2,8 @@
 
 Investigação em 27/11/2026. Nenhuma ferramenta SNS está ativa no plugin; não foram usados dados de utentes nem realizadas marcações. Saúde pública e navegação de serviços podem avançar antes de qualquer acesso a dados pessoais.
 
+Investigação aprofundada: [funcionalidades do portal/app SNS 24, RSE WebAPI e proposta de implementação](sns24-discovery.md).
+
 ## O que podemos oferecer
 
 | Necessidade | Evidência disponível | Implementação proposta / dependência |
@@ -19,7 +21,7 @@ O SNS 24 pode procurar alternativas em SAC/CAC quando não existem vagas na unid
 
 - A SPMS descreve atualização de urgências de dez em dez minutos e de consultas/cirurgias diariamente. A interface deve mostrar a data real do registo e tratar dados ausentes/desatualizados, sem garantir essa cadência para todas as unidades.
 - O HTML e JavaScript públicos do portal foram consultados. A aplicação referencia `/api/institutions`, listas de especialidades e relatórios incorporados. Um GET anónimo a `/api/institutions` devolveu HTTP 400; não foi demonstrado um contrato de leitura utilizável por terceiros.
-- Foi localizada documentação RSE WebAPI 1.6.1 em resultados oficiais SPMS, mas a leitura integral falhou (403/timeout). Não é base suficiente para afirmar acesso, estabilidade ou elegibilidade.
+- A leitura inicial da RSE WebAPI 1.6.1 falhou (403/timeout); numa verificação posterior foi possível ler o PDF completo. A data interna é 10/12/2018 e exige registo/credenciais SPMS. Ver [análise técnica](sns24-discovery.md); não comprova contrato atual ou elegibilidade.
 - Não foram contactados endpoints de escrita, usadas credenciais ou extraídos tokens de relatórios.
 - A marcação no SNS 24 é descrita como envio de um pedido à unidade. O eCidadão deverá distinguir pedido enviado, aceite e marcação confirmada.
 
