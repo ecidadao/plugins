@@ -62,3 +62,12 @@ O pacote mantém as duas skills existentes; nenhuma skill nova é necessária pa
 
 Não se induziu uma falha do portal externo para este teste de produção, nem se alterou o relógio do servidor para testar expiração futura.
 Os casos de falha e fronteira temporal permanecem critérios de regressão; a verificação HTTP não comprova execução dos prompts em clientes nem aprovação de diretórios.
+
+## Evidência do pacote publicado — 27/11/2026
+
+O [PR #6](https://github.com/ecidadao/plugins/pull/6) passou CI no head `2233a2e3a6cdfe8f5072aee36d3466505de27016`; a tag `v0.3.4` identifica o merge `633fbea4b82c6aaa58aae4fe53bed9356e201396`.
+Sync/check/build e as duas validações Claude estritas passaram localmente; o [workflow de release](https://github.com/ecidadao/plugins/actions/runs/46010532379) também passou.
+A [release pública e ZIP](https://github.com/ecidadao/plugins/releases/tag/v0.3.4) foi publicada às 13:50 UTC.
+Download sem autenticação e verificação de integridade confirmaram dez ficheiros, correspondência byte a byte à tag, versão 0.3.4 nos dois manifestos, duas skills e URL MCP preservados.
+SHA-256 do ZIP: `ee6c883c438997f472b9bfa008a8dcffa3a39ee5a08f562753b16b428b71f4e0`.
+Não houve instalação no cliente do utilizador nem validação de execução dentro de Codex, Claude ou Mistral.
