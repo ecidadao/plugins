@@ -4,6 +4,19 @@ Plugins abertos para Codex e Claude Code, sob licença Apache-2.0. Partilham dua
 
 O serviço é independente do Estado. Ajuda a encontrar os portais oficiais e a preparar rascunhos; não acede a contas, não emite senhas nem submete pedidos.
 
+## Estado de publicação e funcionalidades
+
+Verificado em 27/11/2026. Consulte [os estados por plataforma e a matriz de funcionalidades](docs/publication-status.md).
+
+| Canal | Estado |
+|---|---|
+| GitHub / Codex / Claude Code | Pacote aberto [v0.3.2 publicado](https://github.com/ecidadao/plugins/releases/tag/v0.3.2), instalável pelos comandos abaixo |
+| Diretório OpenAI | Último estado comunicado: **In review**, versão 0.3.1, em 13/11/2026; estado atual não reconfirmado |
+| Diretório oficial Anthropic | Aprovação/publicação não confirmadas; instalação pelo marketplace deste repositório disponível |
+| Mistral | [Configuração MCP documentada](docs/mistral.md); validação dentro do cliente pendente |
+
+Os plugins públicos expõem seis ferramentas. A pesquisa de serviços do website, o Livro Amarelo experimental e as consultas de filas do site não estão incluídos nesse catálogo público. Publicação no GitHub não equivale a aprovação num diretório oficial.
+
 ## Instalar no Codex
 
 Numa versão do Codex CLI com suporte para plugins:
