@@ -1,0 +1,60 @@
+{
+  "model": "caravela",
+  "stream": false,
+  "messages": [
+    {
+      "role": "user",
+      "content": "Como peço exames perto de mim na App SNS 24? Explica o percurso, sem aceder à minha conta."
+    }
+  ],
+  "tools": [
+    {
+      "type": "function",
+      "function": {
+        "name": "ecidadao__sns24_service_guidance",
+        "description": "Explica percursos oficiais para consultas, exames, renovação de medicação habitual e referenciações no Portal/App SNS 24, em PT ou EN. Não consulta contas, vagas ou dados clínicos; não faz triagem nem submete pedidos. Não envie dados pessoais.",
+        "parameters": {
+          "type": "object",
+          "required": [
+            "service"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "service": {
+              "type": "string",
+              "enum": [
+                "appointments",
+                "exams",
+                "medication",
+                "referrals"
+              ]
+            },
+            "channel": {
+              "default": "both",
+              "type": "string",
+              "enum": [
+                "portal",
+                "app",
+                "both"
+              ]
+            },
+            "language": {
+              "default": "pt",
+              "type": "string",
+              "enum": [
+                "pt",
+                "en"
+              ]
+            }
+          }
+        }
+      }
+    }
+  ],
+  "tool_choice": {
+    "type": "function",
+    "function": {
+      "name": "ecidadao__sns24_service_guidance"
+    }
+  }
+}

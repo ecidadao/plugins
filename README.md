@@ -60,6 +60,8 @@ A ligação MCP descobre a ferramenta no servidor; clientes que guardem o catál
 
 ## Desenvolvimento
 
+Integrações em avaliação: [Caravela — análise, parceria e exemplo de ponte API/MCP](docs/caravela-integration.md). Ainda sem conector Caravela instalado ou teste E2E no fornecedor.
+
 `plugins/ecidadao/plugin.json` e `mcp.json` são a fonte dos metadados e da ligação MCP. As skills são partilhadas. Depois de editar, gere e valide os adaptadores Claude:
 
 ```sh

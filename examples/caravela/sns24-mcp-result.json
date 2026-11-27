@@ -1,0 +1,23 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "Apenas orientação. O eCidadão não acedeu à conta, consultou vagas ou enviou pedidos. Inicie sessão apenas nos canais oficiais do SNS 24.\n\nPedir exames perto de si\n\nPrecisa de uma requisição eletrónica ativa com exames elegíveis. São apresentados prestadores convencionados para os exames selecionados.\n\nNa App SNS 24, abra Receitas e exames → Exames, escolha a requisição e Pedir agendamento de exames. Indique distrito/concelho ou use Ver entidades perto de mim, permitindo localização na app oficial. Escolha o prestador e reveja antes de submeter.\n\nO pedido é enviado ao prestador, com cópia por email para si. A data e a hora são confirmadas posteriormente pelo prestador; enviar o pedido não reserva uma vaga.\n\nConfirme que o prestador realiza o exame na morada escolhida. Para alterar ou cancelar, contacte o prestador: o SNS 24 não disponibiliza essa operação para estes pedidos.\n\nhttps://www.sns24.gov.pt/pt/servico/exames-e-resultados/"
+    }
+  ],
+  "structuredContent": {
+    "status": "guidance_only",
+    "service": "exams",
+    "title": "Pedir exames perto de si",
+    "source": "https://www.sns24.gov.pt/pt/servico/exames-e-resultados/",
+    "steps": "Apenas orientação. O eCidadão não acedeu à conta, consultou vagas ou enviou pedidos. Inicie sessão apenas nos canais oficiais do SNS 24.\n\nPedir exames perto de si\n\nPrecisa de uma requisição eletrónica ativa com exames elegíveis. São apresentados prestadores convencionados para os exames selecionados.\n\nNa App SNS 24, abra Receitas e exames → Exames, escolha a requisição e Pedir agendamento de exames. Indique distrito/concelho ou use Ver entidades perto de mim, permitindo localização na app oficial. Escolha o prestador e reveja antes de submeter.\n\nO pedido é enviado ao prestador, com cópia por email para si. A data e a hora são confirmadas posteriormente pelo prestador; enviar o pedido não reserva uma vaga.\n\nConfirme que o prestador realiza o exame na morada escolhida. Para alterar ou cancelar, contacte o prestador: o SNS 24 não disponibiliza essa operação para estes pedidos.\n\nhttps://www.sns24.gov.pt/pt/servico/exames-e-resultados/",
+    "channel": "app",
+    "language": "pt",
+    "requirements": "Precisa de uma requisição eletrónica ativa com exames elegíveis. São apresentados prestadores convencionados para os exames selecionados.",
+    "confirmation": "O pedido é enviado ao prestador, com cópia por email para si. A data e a hora são confirmadas posteriormente pelo prestador; enviar o pedido não reserva uma vaga.",
+    "alternative": "Confirme que o prestador realiza o exame na morada escolhida. Para alterar ou cancelar, contacte o prestador: o SNS 24 não disponibiliza essa operação para estes pedidos.",
+    "navigation": "Na App SNS 24, abra Receitas e exames → Exames, escolha a requisição e Pedir agendamento de exames. Indique distrito/concelho ou use Ver entidades perto de mim, permitindo localização na app oficial. Escolha o prestador e reveja antes de submeter.",
+    "submitted": false,
+    "verified_on": "2026-11-27"
+  }
+}
