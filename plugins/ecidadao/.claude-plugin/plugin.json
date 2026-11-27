@@ -1,7 +1,7 @@
 {
   "name": "ecidadao",
-  "version": "0.3.3",
-  "description": "Guide people to Portuguese public services, including SNS 24 appointments, tests, repeat prescriptions and referrals. Prepare reviewable administrative drafts; no account access or official submissions.",
+  "version": "0.3.4",
+  "description": "Guide people to Portuguese public services, municipal service routes, public appointment availability in Ponte de Lima and housing/environmental support. Prepare reviewable drafts; no account access, reservations or official submissions.",
   "author": {
     "name": "Código Inadiável",
     "email": "hello@codeperf.io",
@@ -17,7 +17,11 @@
     "complaints",
     "A Minha Rua",
     "SNS 24",
-    "healthcare guidance"
+    "healthcare guidance",
+    "municipal services",
+    "Ponte de Lima",
+    "housing support",
+    "environmental support"
   ],
   "repository": "https://github.com/ecidadao/plugins",
   "privacyPolicyUrl": "https://ecidadao.pt/privacidade"

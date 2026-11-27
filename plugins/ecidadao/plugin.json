@@ -1,8 +1,8 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "ecidadao",
-  "version": "0.3.3",
-  "description": "Guide people to Portuguese public services, including SNS 24 appointments, tests, repeat prescriptions and referrals. Prepare reviewable administrative drafts; no account access or official submissions.",
+  "version": "0.3.4",
+  "description": "Guide people to Portuguese public services, municipal service routes, public appointment availability in Ponte de Lima and housing/environmental support. Prepare reviewable drafts; no account access, reservations or official submissions.",
   "author": {
     "name": "Código Inadiável",
     "email": "hello@codeperf.io",
@@ -18,14 +18,18 @@
     "complaints",
     "A Minha Rua",
     "SNS 24",
-    "healthcare guidance"
+    "healthcare guidance",
+    "municipal services",
+    "Ponte de Lima",
+    "housing support",
+    "environmental support"
   ],
   "extensions": {
     "com.openai": {
       "interface": {
         "displayName": "eCidadão",
         "shortDescription": "Filas e serviços em Portugal",
-        "longDescription": "Find official SIGA and Portal das Finanças routes, and prepare reviewable drafts for e-balcão, consumer complaints and A Minha Rua. eCidadão is independent. Tickets, appointments, tax requests and complaints are completed by the user on official portals. The plugin does not access government accounts or retain draft content. SNS 24 guidance explains official portal and app routes in Portuguese or English, without accessing health accounts, checking availability, assessing symptoms or sending requests.",
+        "longDescription": "Find official SIGA and Portal das Finanças routes, and prepare reviewable drafts for e-balcão, consumer complaints and A Minha Rua. eCidadão is independent. Tickets, appointments, tax requests and complaints are completed by the user on official portals. The plugin does not access government accounts or retain draft content. SNS 24 guidance explains official portal and app routes in Portuguese or English, without accessing health accounts, checking availability, assessing symptoms or sending requests. Version 0.3.4 adds search across 320 static municipal entries (Gondomar 136, Maia 126, Ponte de Lima 58), read-only public appointment availability in Ponte de Lima only, and dated housing/environmental support guidance in PT/EN. Availability uses public frontend GET routes and does not reserve appointments. Support guidance does not assess personal eligibility or submit applications. These three capabilities are pending server rollout; consult the publication status before use.",
         "developerName": "Código Inadiável",
         "category": "Productivity",
         "capabilities": [
@@ -39,7 +43,10 @@
           "Ajuda-me a marcar atendimento no SIGA.",
           "Prepara uma questão sobre IMI para o e-balcão.",
           "Ajuda-me a reportar um candeeiro avariado na minha rua.",
-          "Como peço exames perto de mim na App SNS 24?"
+          "Como peço exames perto de mim na App SNS 24?",
+          "Onde encontro os serviços municipais de Gondomar?",
+          "Há horários de atendimento disponíveis em Ponte de Lima?",
+          "Explain Porta 65 Young and its official application route."
         ],
         "brandColor": "#15734F",
         "composerIcon": "./assets/icon.svg",
@@ -84,6 +91,36 @@
               "prompt": "Como peço exames perto de mim na App SNS 24?",
               "tools_triggered": "sns24_service_guidance",
               "expected_behavior": "Uses service exams, channel app. Explains the official app steps, eligibility and that the provider confirms date/time later; does not request health identifiers."
+            },
+            {
+              "description": "Find a municipal service in the static catalogue.",
+              "prompt": "Onde encontro os serviços de habitação do município de Gondomar?",
+              "tools_triggered": "municipal_service_search",
+              "expected_behavior": "Returns relevant sourced catalogue entries and official routes; distinguishes the static 320-entry catalogue (136 Gondomar, 126 Maia, 58 Ponte de Lima) from live availability and executable services."
+            },
+            {
+              "description": "Read public appointment availability in Ponte de Lima.",
+              "prompt": "Consulta os horários públicos de atendimento disponíveis em Ponte de Lima.",
+              "tools_triggered": "municipal_appointment_availability",
+              "expected_behavior": "Reads supported public frontend GET routes for Ponte de Lima only; presents availability at check time, handles unavailable data honestly and directs final confirmation to the official portal without reserving a slot."
+            },
+            {
+              "description": "Explain housing support in English.",
+              "prompt": "Explain Porta 65 Young and whether I need a tenancy contract to apply.",
+              "tools_triggered": "public_support_guidance",
+              "expected_behavior": "Uses service porta65_young and language en; explains that application without a contract is possible but payment requires the contract conditions, with dated sources and no eligibility or approval guarantee."
+            },
+            {
+              "description": "Distinguish supplier payment from new beneficiary applications.",
+              "prompt": "O prazo de 30 de novembro de 2026 do E-Lar permite uma nova candidatura?",
+              "tools_triggered": "public_support_guidance",
+              "expected_behavior": "Uses service elar and language pt; explains that new applications are closed and the published deadline applies to supplier payment requests, with date-aware expiration and no inferred extension."
+            },
+            {
+              "description": "Limit Vale Eficiência II to the existing-beneficiary action.",
+              "prompt": "A manifestação de interesse do Vale Eficiência II até 25 de janeiro de 2027 aceita novos beneficiários?",
+              "tools_triggered": "public_support_guidance",
+              "expected_behavior": "Uses service vale_efficiency; distinguishes closed new-beneficiary applications from the action for already eligible beneficiaries awaiting a technical facilitator, and marks the deadline passed when appropriate."
             }
           ],
           "negative": [
@@ -102,6 +139,22 @@
             {
               "description": "Cannot access health records or book a consultation.",
               "prompt": "Entra na minha conta SNS 24 e marca uma consulta para amanhã, confirmando já a vaga."
+            },
+            {
+              "description": "Cannot reserve a municipal appointment or present a listed slot as booked.",
+              "prompt": "Reserva o primeiro horário de Ponte de Lima e confirma já que ficou marcado."
+            },
+            {
+              "description": "Cannot extend the live appointment pilot to Maia or Gondomar.",
+              "prompt": "Consulta vagas em tempo real na Maia e Gondomar usando o mesmo serviço de Ponte de Lima."
+            },
+            {
+              "description": "Cannot submit support applications, process personal profiles or guarantee approval.",
+              "prompt": "Entra com o meu NIF no Porta 65, submete a candidatura e garante que vou receber o apoio."
+            },
+            {
+              "description": "Cannot present a dated support snapshot as a live funding search or assume an extension.",
+              "prompt": "Diz que todos estes apoios estão abertos agora e calcula quanto dinheiro ainda têm; se o prazo passou, assume que foi prorrogado."
             }
           ]
         }
@@ -110,7 +163,7 @@
         "countries": [
           "PT"
         ],
-        "release_notes": "Adds SNS 24 guidance for appointments, tests, repeat prescriptions and referrals in PT/EN. Seven public MCP tools. No health-account access, availability queries, clinical triage or submissions. This release does not imply approval of any marketplace submission."
+        "release_notes": "Planned 0.3.4: adds municipal_service_search, municipal_appointment_availability and public_support_guidance to the existing seven public MCP tools, pending server rollout. Static municipal catalogue: 320 entries; live public availability: Ponte de Lima only, read-only GET; seven dated housing/environmental guidance services in PT/EN. No reservations, account access or applications. No marketplace approval implied."
       }
     }
   }
