@@ -1,6 +1,6 @@
 # eCidadão no Mistral
 
-Estado em 27/11/2026: endpoint MCP verificado por HTTP; instalação e execução dentro do Mistral ainda não verificadas. Não há conector eCidadão publicado no catálogo Mistral confirmado.
+Estado em 27/11/2026: endpoint MCP verificado por HTTP; loader nativo Vibe 3.1.5 verificado com artefacto adaptado; execução com modelo e dentro de Le Chat/Work ainda não verificadas. Não há conector eCidadão publicado no catálogo Mistral confirmado.
 
 ## Conector personalizado no Le Chat / Work
 
@@ -39,3 +39,11 @@ A leitura de horários usa GET do frontend público; não é reserva nem cobre M
 Os sete apoios são snapshots PT/EN, não candidaturas ou pesquisa de verba disponível.
 Usar os [cenários de revisão](review-0.3.4.md); registar resultados dentro do cliente separadamente da verificação HTTP.
 A verificação HTTP não altera o estado pendente de validação Mistral.
+
+## Vibe CLI: loader verificado, artefacto adaptado
+
+O teste real do `PluginResolver` em Mistral Vibe 3.1.5 carrega as duas skills e o servidor MCP do ZIP adaptado, em diretórios temporários e sem API key.
+O mcp.json original do pacote 0.3.4 é rejeitado pelo parser por conter a extensão OpenAI no servidor.
+Essa extensão é preservada no pacote principal; o job Vibe gera um artefacto separado apenas com a projeção MCP padrão, validada por schema.
+Não foi substituído o ZIP da release 0.3.4, nem testada uma sessão de modelo ou /reload-plugins.
+Veja a [matriz, reprodução e limites do CI](ci-compatibility.md) e a [documentação oficial de plugins Vibe](https://docs.mistral.ai/vibe/code/cli/plugins).

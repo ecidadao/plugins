@@ -9,6 +9,7 @@ permissions:
 jobs:
   validate:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -18,17 +19,49 @@ jobs:
         with:
           node-version: '22'
       - run: npm install -g @anthropic-ai/claude-code@2.1.332
+      - run: python -m pip install --require-hashes -r scripts/requirements-ci.txt
       - run: claude plugin validate plugins/ecidadao --strict
       - run: claude plugin validate . --strict
       - run: python3 scripts/package.py --check --build
+      - run: python3 -m unittest discover -s tests -v
       - uses: actions/upload-artifact@v4
         with:
           name: ecidadao-plugin
-          path: dist/*.zip
+          path: dist/ecidadao-plugin-*.zip
+  codex-install:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: python -m pip install --require-hashes -r scripts/requirements-ci.txt
+      - run: npm install -g @openai/codex@0.172.0
+      - run: python scripts/check_codex.py
+  vibe-loader:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --require-hashes -r scripts/requirements-vibe.txt
+      - run: python scripts/package.py --check --build --variant vibe
+      - run: python scripts/check_vibe.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ecidadao-vibe-compatibility
+          path: dist/*-vibe.zip
   release:
     if: startsWith(github.ref, 'refs/tags/v')
-    needs: validate
+    needs: [validate, codex-install, vibe-loader]
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     permissions:
       contents: write
     steps:
