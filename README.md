@@ -15,7 +15,7 @@ Verificado em 27/11/2026. Consulte [os estados por plataforma e a matriz de func
 | Diretório oficial Anthropic | Aprovação/publicação não confirmadas; instalação pelo marketplace deste repositório disponível |
 | Mistral | [Configuração MCP documentada](docs/mistral.md); validação dentro do cliente pendente |
 
-Os plugins públicos expõem sete ferramentas. A pesquisa de serviços do website e o Livro Amarelo experimental e as consultas de filas do site não estão incluídos nesse catálogo público. Publicação no GitHub não equivale a aprovação num diretório oficial.
+O endpoint público 0.3.4 expõe dez ferramentas, verificado em 27/11/2026. O pacote 0.3.4 está validado para publicação; os estados de distribuição confirmados constam da tabela acima. A pesquisa de serviços do website e o Livro Amarelo experimental e as consultas de filas do site não estão incluídos nesse catálogo público. Publicação no GitHub não equivale a aprovação num diretório oficial.
 
 ## Instalar no Codex
 
@@ -48,7 +48,7 @@ claude mcp add --transport http ecidadao https://ecidadao.pt/mcp/public
 
 Para outro cliente MCP, configure uma ligação Streamable HTTP com o mesmo URL. Para alojamento próprio, consulte [o código e as instruções do servidor](https://github.com/ecidadao/ecidadao).
 
-Ferramentas: `siga_visit_guidance`, `financas_service_guidance`, `prepare_financas_ebalcao`, `prepare_street_report`, `prepare_complaint` `official_submission_guidance` e `sns24_service_guidance`.
+Ferramentas existentes, preservadas em 0.3.4: `siga_visit_guidance`, `financas_service_guidance`, `prepare_financas_ebalcao`, `prepare_street_report`, `prepare_complaint`, `official_submission_guidance` e `sns24_service_guidance`.
 
 Exemplos: “Ajuda-me a marcar atendimento pelo SIGA” e “Prepara uma questão sobre IMI para o e-balcão”. Não inclua credenciais ou documentos de identificação.
 
@@ -57,6 +57,21 @@ Exemplos: “Ajuda-me a marcar atendimento pelo SIGA” e “Prepara uma questã
 Desde 0.3.3, `sns24_service_guidance` explica os percursos de consultas, exames, medicação habitual e referenciações em português ou inglês. Escolha `service` (`appointments`, `exams`, `medication`, `referrals`), `language` (`pt`, `en`) e `channel` (`portal`, `app`, `both`). Não acede a contas ou vagas, não faz triagem nem envia pedidos. [Percursos no site](https://ecidadao.pt/saude).
 
 A ligação MCP descobre a ferramenta no servidor; clientes que guardem o catálogo podem precisar de reconexão. Atualize o pacote para obter os novos metadados e exemplos.
+
+## Municípios e apoios — versão 0.3.4
+
+As sete ferramentas existentes são preservadas. O catálogo público acrescenta:
+
+| Ferramenta | Cobertura e limites |
+|---|---|
+| `municipal_service_search` | Pesquisa em 320 entradas estáticas: Gondomar 136, Maia 126 e Ponte de Lima 58; encaminhamento oficial, sem executar o serviço |
+| `municipal_appointment_availability` | Apenas Ponte de Lima; leitura em tempo real por GET do frontend público, disponibilidade no instante da consulta, sem reserva |
+| `public_support_guidance` | Sete percursos de habitação/ambiente em PT/EN, com fontes e datas; sem candidatura ou avaliação pessoal de elegibilidade |
+
+Exemplos: “Onde encontro os serviços municipais de Gondomar?”, “Há horários de atendimento disponíveis em Ponte de Lima?” e “Explain Porta 65 Young”.
+Os serviços de apoio são `porta65_young`, `porta65_plus`, `gondomar_housing`, `environmental_fund`, `vale_efficiency`, `elar` e `green_mobility`.
+A orientação distingue nova candidatura, ação de beneficiário existente e pedido de pagamento de fornecedor; prazos ultrapassados não implicam prorrogação e o saldo disponível não é conhecido.
+Não envie dados pessoais. Consulte [o estado de publicação e a evidência HTTP](docs/publication-status.md) e [os cenários de revisão](docs/review-0.3.4.md).
 
 ## Desenvolvimento
 

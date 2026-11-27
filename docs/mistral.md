@@ -9,7 +9,7 @@ Na documentação atual do Mistral, a configuração está descrita em Work:
 1. Como administrador da conta/organização, abrir Connectors e Add Connector.
 2. Selecionar Custom MCP Connector.
 3. Nome: `ecidadao`. URL: `https://ecidadao.pt/mcp/public`.
-4. Ligar; o endpoint não exige autenticação. Confirmar que aparecem as sete ferramentas da [matriz](publication-status.md).
+4. Ligar; o endpoint não exige autenticação. Confirmar as dez ferramentas do servidor 0.3.4 da [matriz](publication-status.md), verificadas por HTTP em 27/11/2026.
 5. Testar «Onde começo para marcar atendimento pelo SIGA?» e «Prepara uma questão sobre IMI para o e-balcão».
 
 Verificar que são usadas as ferramentas apropriadas e que o resultado distingue orientação/rascunho de uma operação oficial concluída. Confirmar também que um pedido para entrar nas Finanças ou emitir senha não é apresentado como executado.
@@ -27,6 +27,15 @@ curl --fail-with-body https://ecidadao.pt/mcp/public \
 
 O servidor requer o cabeçalho Accept indicado; um pedido curl sem ele recebeu HTTP 406 na verificação. Com o cabeçalho, `initialize` e `tools/list` responderam corretamente. Este resultado comprova o endpoint, não o comportamento do cliente Mistral.
 
-Para utilização programática, o Studio permite registar servidores MCP como conectores; o registo e os testes requerem acesso à conta/API Mistral. Não é necessária uma reimplementação das sete ferramentas só para mudar de cliente.
+Para utilização programática, o Studio permite registar servidores MCP como conectores; o registo e os testes requerem acesso à conta/API Mistral. Não é necessária uma reimplementação das ferramentas só para mudar de cliente.
 
 Fontes oficiais: [configurar conectores MCP](https://docs.mistral.ai/vibe/work/web/connectors/mcp-connectors), [quickstart de conectores Studio](https://docs.mistral.ai/studio/connectors/quickstart). Consultadas em 27/11/2026.
+
+## Catálogo 0.3.4
+
+Após reconexão/atualização do catálogo, verificar também `municipal_service_search`, `municipal_appointment_availability` e `public_support_guidance`: dez ferramentas no total, mantendo as sete existentes.
+Testar pesquisa de serviços de Gondomar (catálogo estático de 320 entradas nos três municípios), leitura de horários apenas em Ponte de Lima e orientação Porta 65 Jovem em inglês.
+A leitura de horários usa GET do frontend público; não é reserva nem cobre Maia/Gondomar.
+Os sete apoios são snapshots PT/EN, não candidaturas ou pesquisa de verba disponível.
+Usar os [cenários de revisão](review-0.3.4.md); registar resultados dentro do cliente separadamente da verificação HTTP.
+A verificação HTTP não altera o estado pendente de validação Mistral.
