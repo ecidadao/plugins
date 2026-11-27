@@ -29,7 +29,7 @@ O endpoint `https://ecidadao.pt/mcp/public` respondeu a `initialize` (protocolo 
 | Filas SIGA em tempo real | Não incluídas | Adaptador do website, com cobertura limitada; acesso de integração por confirmar |
 | Inglês e tema automático | Funcionalidades de interface do site; não são ferramentas MCP | Disponíveis no website; rascunhos MCP continuam em português |
 | Marcação, senha, submissão oficial ou acesso a contas | Não disponível | Não implementado como operação concluída pelo serviço |
-| Saúde: filas e consultas | Não disponível | Em investigação; nenhuma integração SNS ativa |
+| Saúde: filas e consultas | Não disponível | [Opções e plano de integração](health-options.md); nenhuma integração SNS ativa |
 
 As duas skills distribuídas são `siga-assistido` e `financas-assistido`. Ligar apenas o MCP noutro cliente não instala automaticamente essas skills.
 
