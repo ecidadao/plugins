@@ -29,7 +29,7 @@
       "interface": {
         "displayName": "eCidadão",
         "shortDescription": "Filas e serviços em Portugal",
-        "longDescription": "Find official SIGA and Portal das Finanças routes, and prepare reviewable drafts for e-balcão, consumer complaints and A Minha Rua. eCidadão is independent. Tickets, appointments, tax requests and complaints are completed by the user on official portals. The plugin does not access government accounts or retain draft content. SNS 24 guidance explains official portal and app routes in Portuguese or English, without accessing health accounts, checking availability, assessing symptoms or sending requests. Version 0.3.4 adds search across 320 static municipal entries (Gondomar 136, Maia 126, Ponte de Lima 58), read-only public appointment availability in Ponte de Lima only, and dated housing/environmental support guidance in PT/EN. Availability uses public frontend GET routes and does not reserve appointments. Support guidance does not assess personal eligibility or submit applications. These three capabilities are pending server rollout; consult the publication status before use.",
+        "longDescription": "Find official SIGA and Portal das Finanças routes, and prepare reviewable drafts for e-balcão, consumer complaints and A Minha Rua. eCidadão is independent. Tickets, appointments, tax requests and complaints are completed by the user on official portals. The plugin does not access government accounts or retain draft content. SNS 24 guidance explains official portal and app routes in Portuguese or English, without accessing health accounts, checking availability, assessing symptoms or sending requests. Version 0.3.4 adds search across 320 static municipal entries (Gondomar 136, Maia 126, Ponte de Lima 58), read-only public appointment availability in Ponte de Lima only, and dated housing/environmental support guidance in PT/EN. Availability uses public frontend GET routes and does not reserve appointments. Support guidance does not assess personal eligibility or submit applications. The ten-tool public endpoint was verified on 27 November 2026; availability is an observation at check time, not a reservation.",
         "developerName": "Código Inadiável",
         "category": "Productivity",
         "capabilities": [
@@ -163,7 +163,7 @@
         "countries": [
           "PT"
         ],
-        "release_notes": "Planned 0.3.4: adds municipal_service_search, municipal_appointment_availability and public_support_guidance to the existing seven public MCP tools, pending server rollout. Static municipal catalogue: 320 entries; live public availability: Ponte de Lima only, read-only GET; seven dated housing/environmental guidance services in PT/EN. No reservations, account access or applications. No marketplace approval implied."
+        "release_notes": "0.3.4: adds municipal_service_search, municipal_appointment_availability and public_support_guidance to the existing seven public MCP tools. Static municipal catalogue: 320 entries; live public availability: Ponte de Lima only, read-only GET; seven dated housing/environmental guidance services in PT/EN. No reservations, account access or applications. No marketplace approval implied."
       }
     }
   }

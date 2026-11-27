@@ -1,10 +1,10 @@
 # Revisão do pacote 0.3.4
 
-Plano de revisão de 27/11/2026, não registo de execução em produção ou num cliente.
-As três capacidades novas estão pendentes de rollout confirmado; os casos abaixo devem ser executados depois dessa confirmação.
+Revisão de 27/11/2026, com verificações HTTP em produção registadas abaixo.
+Os cenários em linguagem natural continuam a ser critérios de revisão em clientes; não foram executados dentro de Codex, Claude ou Mistral.
 Os casos de revisão dos manifestos anteriores são preservados.
 
-## Catálogo esperado após rollout
+## Catálogo confirmado por HTTP
 
 Dez nomes exatos, sem substituir as sete ferramentas anteriores:
 
@@ -49,3 +49,16 @@ Um pedido de reserva municipal ou candidatura a apoio deve continuar a ser encam
 Confirmar os totais documentados do catálogo estático: Gondomar 136, Maia 126, Ponte de Lima 58, total 320.
 Registar separadamente versão/data, resposta HTTP, resultado dentro de cada cliente e falhas; um teste HTTP não valida Mistral, Codex ou Claude.
 O pacote mantém as duas skills existentes; nenhuma skill nova é necessária para estas três ferramentas MCP.
+
+## Evidência HTTP em produção — 27/11/2026, 13:47 UTC
+
+- Deploy [46009722760](https://github.com/ecidadao/ecidadao/actions/runs/46009722760) concluído com sucesso; `/health` devolveu a revisão `96e027d39b83da1b6123277a8c487c9014ed5fa3`.
+- `initialize` confirmou servidor 0.3.4 e protocolo 2025-06-18; `tools/list` devolveu exatamente os dez nomes acima.
+- 31 chamadas HTTP às três ferramentas: pesquisa nos três municípios em PT/EN com totais 136/126/58; sete apoios em ambos os idiomas; áreas, datas e horários de Ponte de Lima; oito rejeições de campos extra, cobertura, serviço ou idioma inválidos.
+- As três ferramentas rejeitaram um campo extra sintético sem ecoar o marcador; disponibilidade rejeitou Maia/Gondomar, pesquisa rejeitou município desconhecido e apoios rejeitaram serviço/idioma desconhecidos.
+- Ponte de Lima devolveu cinco áreas; a área 7 devolveu datas e quatro horários para 02/12/2026 (09:30, 10:30, 11:30 e 15:30, Europe/Lisbon), sempre com `reserved: false` e `submitted: false`. São observações às 13:47 UTC, não disponibilidade garantida para uma consulta posterior.
+- O smoke completo da aplicação passou com `--municipal --live-municipal --locales --services --sns24 --feedback --brand` e a revisão exata acima.
+- Não foram introduzidos dados pessoais, feitas reservas, candidaturas ou envios de email. Os apoios mantêm `guidance_only`, `submitted: false` e verba remanescente desconhecida.
+
+Não se induziu uma falha do portal externo para este teste de produção, nem se alterou o relógio do servidor para testar expiração futura.
+Os casos de falha e fronteira temporal permanecem critérios de regressão; a verificação HTTP não comprova execução dos prompts em clientes nem aprovação de diretórios.
