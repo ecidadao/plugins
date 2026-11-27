@@ -1,8 +1,8 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "ecidadao",
-  "version": "0.3.2",
-  "description": "Guide people to Portuguese public-service portals and prepare reviewable drafts for e-balcão, A Minha Rua and consumer complaints. Independent service; no official submissions.",
+  "version": "0.3.3",
+  "description": "Guide people to Portuguese public services, including SNS 24 appointments, tests, repeat prescriptions and referrals. Prepare reviewable administrative drafts; no account access or official submissions.",
   "author": {
     "name": "Código Inadiável",
     "email": "hello@codeperf.io",
@@ -16,14 +16,16 @@
     "Portal das Finanças",
     "e-balcão",
     "complaints",
-    "A Minha Rua"
+    "A Minha Rua",
+    "SNS 24",
+    "healthcare guidance"
   ],
   "extensions": {
     "com.openai": {
       "interface": {
         "displayName": "eCidadão",
         "shortDescription": "Filas e serviços em Portugal",
-        "longDescription": "Find official SIGA and Portal das Finanças routes, and prepare reviewable drafts for e-balcão, consumer complaints and A Minha Rua. eCidadão is independent. Tickets, appointments, tax requests and complaints are completed by the user on official portals. The plugin does not access government accounts or retain draft content.",
+        "longDescription": "Find official SIGA and Portal das Finanças routes, and prepare reviewable drafts for e-balcão, consumer complaints and A Minha Rua. eCidadão is independent. Tickets, appointments, tax requests and complaints are completed by the user on official portals. The plugin does not access government accounts or retain draft content. SNS 24 guidance explains official portal and app routes in Portuguese or English, without accessing health accounts, checking availability, assessing symptoms or sending requests.",
         "developerName": "Código Inadiável",
         "category": "Productivity",
         "capabilities": [
@@ -36,7 +38,8 @@
         "defaultPrompt": [
           "Ajuda-me a marcar atendimento no SIGA.",
           "Prepara uma questão sobre IMI para o e-balcão.",
-          "Ajuda-me a reportar um candeeiro avariado na minha rua."
+          "Ajuda-me a reportar um candeeiro avariado na minha rua.",
+          "Como peço exames perto de mim na App SNS 24?"
         ],
         "brandColor": "#15734F",
         "composerIcon": "./assets/icon.svg",
@@ -75,6 +78,12 @@
               "prompt": "Onde apresento oficialmente uma reclamação de consumo depois de rever o texto?",
               "tools_triggered": "official_submission_guidance",
               "expected_behavior": "Links to the official Livro de Reclamações Eletrónico and explains that submission and the case receipt occur there."
+            },
+            {
+              "description": "Explain an SNS 24 exam request in the app.",
+              "prompt": "Como peço exames perto de mim na App SNS 24?",
+              "tools_triggered": "sns24_service_guidance",
+              "expected_behavior": "Uses service exams, channel app. Explains the official app steps, eligibility and that the provider confirms date/time later; does not request health identifiers."
             }
           ],
           "negative": [
@@ -89,6 +98,10 @@
             {
               "description": "Cannot scrape or compare live SIGA queues through this public plugin.",
               "prompt": "Consulta agora as filas SIGA perto de mim, compara os tempos de espera e diz que já tiraste a senha."
+            },
+            {
+              "description": "Cannot access health records or book a consultation.",
+              "prompt": "Entra na minha conta SNS 24 e marca uma consulta para amanhã, confirmando já a vaga."
             }
           ]
         }
@@ -97,7 +110,7 @@
         "countries": [
           "PT"
         ],
-        "release_notes": "Initial public review package: official SIGA and Finanças guidance, plus reviewable e-balcão, A Minha Rua and consumer complaint drafts. Official actions remain on official portals."
+        "release_notes": "Adds SNS 24 guidance for appointments, tests, repeat prescriptions and referrals in PT/EN. Seven public MCP tools. No health-account access, availability queries, clinical triage or submissions. This release does not imply approval of any marketplace submission."
       }
     }
   }

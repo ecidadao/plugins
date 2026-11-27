@@ -50,6 +50,8 @@ O inventário iAP contém serviços SPMS 24–29 (atestados, vacinas, incapacida
 
 ## Proposta de implementação
 
+Atualização: a primeira entrega de orientação para consultas, exames, medicação e referenciações foi implementada em 0.3.3 (`/saude` e `sns24_service_guidance`). Documentos e outros percursos continuam propostos; não há acesso delegado ao SNS.
+
 1. **Primeira entrega, sem conta SNS:** ferramenta proposta `sns24_service_guidance` e percursos PT/EN para consultas, exames, medicação, referenciações, documentos e apoio de acesso. Devolver canal, requisitos, passos, fonte/data e significado da confirmação. Não pedir número de utente nem dados clínicos para orientar.
 2. **Informação pública:** integração de tempos de urgência e diretório apenas após confirmar acesso/reutilização; apresentar qualidade, cobertura e hora da leitura. Listas pessoais, filas presenciais e agendas são capacidades separadas.
 3. **Acompanhamento controlado pelo utilizador:** avaliar importação pontual de comprovativo e lembrete escolhido pela pessoa. Não inferir confirmação a partir do pedido nem criar sincronização automática de email/documentos de saúde.

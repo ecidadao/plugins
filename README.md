@@ -10,12 +10,12 @@ Verificado em 27/11/2026. Consulte [os estados por plataforma e a matriz de func
 
 | Canal | Estado |
 |---|---|
-| GitHub / Codex / Claude Code | Pacote aberto [v0.3.2 publicado](https://github.com/ecidadao/plugins/releases/tag/v0.3.2), instalável pelos comandos abaixo |
+| GitHub / Codex / Claude Code | Pacote aberto [v0.3.3 publicado](https://github.com/ecidadao/plugins/releases/tag/v0.3.3), instalável pelos comandos abaixo |
 | Diretório OpenAI | Último estado comunicado: **In review**, versão 0.3.1, em 13/11/2026; estado atual não reconfirmado |
 | Diretório oficial Anthropic | Aprovação/publicação não confirmadas; instalação pelo marketplace deste repositório disponível |
 | Mistral | [Configuração MCP documentada](docs/mistral.md); validação dentro do cliente pendente |
 
-Os plugins públicos expõem seis ferramentas. A pesquisa de serviços do website, o Livro Amarelo experimental e as consultas de filas do site não estão incluídos nesse catálogo público. Publicação no GitHub não equivale a aprovação num diretório oficial.
+Os plugins públicos expõem sete ferramentas. A pesquisa de serviços do website e o Livro Amarelo experimental e as consultas de filas do site não estão incluídos nesse catálogo público. Publicação no GitHub não equivale a aprovação num diretório oficial.
 
 ## Instalar no Codex
 
@@ -48,9 +48,15 @@ claude mcp add --transport http ecidadao https://ecidadao.pt/mcp/public
 
 Para outro cliente MCP, configure uma ligação Streamable HTTP com o mesmo URL. Para alojamento próprio, consulte [o código e as instruções do servidor](https://github.com/ecidadao/ecidadao).
 
-Ferramentas: `siga_visit_guidance`, `financas_service_guidance`, `prepare_financas_ebalcao`, `prepare_street_report`, `prepare_complaint` e `official_submission_guidance`.
+Ferramentas: `siga_visit_guidance`, `financas_service_guidance`, `prepare_financas_ebalcao`, `prepare_street_report`, `prepare_complaint` `official_submission_guidance` e `sns24_service_guidance`.
 
 Exemplos: “Ajuda-me a marcar atendimento pelo SIGA” e “Prepara uma questão sobre IMI para o e-balcão”. Não inclua credenciais ou documentos de identificação.
+
+## SNS 24
+
+Desde 0.3.3, `sns24_service_guidance` explica os percursos de consultas, exames, medicação habitual e referenciações em português ou inglês. Escolha `service` (`appointments`, `exams`, `medication`, `referrals`), `language` (`pt`, `en`) e `channel` (`portal`, `app`, `both`). Não acede a contas ou vagas, não faz triagem nem envia pedidos. [Percursos no site](https://ecidadao.pt/saude).
+
+A ligação MCP descobre a ferramenta no servidor; clientes que guardem o catálogo podem precisar de reconexão. Atualize o pacote para obter os novos metadados e exemplos.
 
 ## Desenvolvimento
 

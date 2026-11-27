@@ -1,6 +1,8 @@
 # Saúde: opções de integração
 
-Investigação em 27/11/2026. Nenhuma ferramenta SNS está ativa no plugin; não foram usados dados de utentes nem realizadas marcações. Saúde pública e navegação de serviços podem avançar antes de qualquer acesso a dados pessoais.
+Investigação em 27/11/2026. A versão 0.3.3 acrescenta orientação estática SNS 24; nenhuma operação é executada no SNS; não foram usados dados de utentes nem realizadas marcações. Saúde pública e navegação de serviços podem avançar antes de qualquer acesso a dados pessoais.
+
+Implementado: `/saude` e `sns24_service_guidance` com percursos PT/EN para consultas, exames, medicação e referenciações. As integrações abaixo permanecem condicionais.
 
 Investigação aprofundada: [funcionalidades do portal/app SNS 24, RSE WebAPI e proposta de implementação](sns24-discovery.md).
 
