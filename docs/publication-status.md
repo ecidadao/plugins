@@ -6,16 +6,16 @@ Verificação: 27/11/2026. Separar sempre versão do pacote, disponibilidade do 
 
 Em 27/11/2026, o [deploy 46009722760](https://github.com/ecidadao/ecidadao/actions/runs/46009722760) terminou com sucesso.
 O endpoint `/health` anunciou exatamente `96e027d39b83da1b6123277a8c487c9014ed5fa3`, merge do [PR da aplicação #11](https://github.com/ecidadao/ecidadao/pull/11).
-O pacote 0.3.4 foi preparado e validado localmente; os estados GitHub abaixo conservam a última release confirmada até à conclusão da publicação.
+O pacote 0.3.4 foi publicado em 27/11/2026 às 13:50 UTC; a release e o ZIP descarregado foram confirmados após o workflow.
 A evidência HTTP e os limites estão registados na [revisão 0.3.4](review-0.3.4.md).
 
 ## Distribuição
 
 | Canal | Versão / estado | Evidência e trabalho pendente |
 |---|---|---|
-| GitHub Release | v0.3.3 publicada em 27/11/2026 | [Release e ZIP](https://github.com/ecidadao/plugins/releases/tag/v0.3.3) |
-| Codex, marketplace deste repositório | Pacote 0.3.3 disponível | Manifesto e catálogo em GitHub; comandos no README |
-| Claude Code, marketplace deste repositório | Pacote 0.3.3 disponível | Adaptadores gerados e validados pela CI; comandos no README |
+| GitHub Release | v0.3.4 publicada em 27/11/2026 | [Release e ZIP](https://github.com/ecidadao/plugins/releases/tag/v0.3.4) |
+| Codex, marketplace deste repositório | Pacote 0.3.4 disponível | Manifesto e catálogo em GitHub; comandos no README |
+| Claude Code, marketplace deste repositório | Pacote 0.3.4 disponível | Adaptadores gerados e validados pela CI; comandos no README |
 | OpenAI, diretório oficial | 0.3.1: último estado comunicado **In review**, 13/11/2026 | [Registo histórico](https://github.com/ecidadao/ecidadao/blob/main/docs/plugin-submission-0.3.1.md); reconfirmar painel antes de anunciar aprovação ou publicação |
 | Anthropic, diretório oficial | Publicação não confirmada | Marketplace próprio não demonstra inclusão no diretório oficial |
 | Mistral, conector personalizado | Configuração documentada; teste no cliente pendente | [Guia](mistral.md); sem publicação em catálogo Mistral confirmada |
@@ -54,8 +54,12 @@ A versão 0.3.3 acrescenta orientação SNS 24. A candidatura OpenAI 0.3.1 conti
 
 ## Publicação do pacote 0.3.4
 
-O rollout da aplicação está confirmado; a publicação do pacote segue por PR com CI verde no head exato, tag no merge commit e release ZIP gerada pelo workflow.
-A disponibilidade no GitHub será registada apenas depois de confirmar a release e validar o ZIP descarregado.
+O [PR #6](https://github.com/ecidadao/plugins/pull/6) foi integrado com [CI verde](https://github.com/ecidadao/plugins/actions/runs/46010344688) no head `2233a2e3a6cdfe8f5072aee36d3466505de27016`.
+A tag `v0.3.4` aponta para o merge `633fbea4b82c6aaa58aae4fe53bed9356e201396`.
+O [workflow da tag](https://github.com/ecidadao/plugins/actions/runs/46010532379) gerou a [release pública](https://github.com/ecidadao/plugins/releases/tag/v0.3.4), sem marcação draft ou prerelease.
+O ZIP foi descarregado sem autenticação: dez ficheiros correspondem byte a byte aos ficheiros do plugin na tag, ambos os manifestos indicam 0.3.4, as duas skills e o endpoint público são preservados.
+SHA-256: `ee6c883c438997f472b9bfa008a8dcffa3a39ee5a08f562753b16b428b71f4e0`.
+Não foi instalada nem atualizada uma instância do plugin no cliente do utilizador.
 OpenAI 0.3.1, Anthropic e validação Mistral mantêm estados independentes: disponibilidade HTTP ou GitHub Release não comprova aprovação nem execução dentro desses clientes.
 
 Serviços de apoio: `porta65_young`, `porta65_plus`, `gondomar_housing`, `environmental_fund`, `vale_efficiency`, `elar`, `green_mobility`.
